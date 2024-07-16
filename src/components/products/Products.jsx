@@ -40,8 +40,25 @@ const Products = () => {
     useEffect(() => {
         async function fetchProducts(){
          setLoading(true)
+
+         let query = `${baseURL}/products`;
+
+         const params = [];
+         if (selectedColors) {
+           params.push(`color_options_like=${encodeURIComponent(selectedColors)}`);
+         }
+         if (selectedBrand) {
+           params.push(`brand_name=${encodeURIComponent(selectedBrand)}`);
+         }
+   
+         if (params.length > 0) {
+           query += `?${params.join("&")}`;
+         }
+   
+
+
          try {
-             const response = await fetch(`${baseURL}/products`)
+             const response = await fetch(`${query}`)
              const data = await response.json()
              setProducts(data)   
          } catch (error) {
@@ -53,7 +70,7 @@ const Products = () => {
  
         }
         fetchProducts()  
-     } ,[])
+     } ,[selectedBrand , selectedColors])
  
      
 
