@@ -1,7 +1,7 @@
 import { FaCartShopping } from "react-icons/fa6";
 
 import Button from "../button/Button";
-// import styles from "../c"
+import styles from "./card.module.scss";
 import { Link } from "react-router-dom";
 
 const Card = ({ product, cart, setCart }) => {
@@ -13,17 +13,19 @@ const Card = ({ product, cart, setCart }) => {
       </h4>
       <p>{product.description}</p>
 
-      {/* <div className={styles.colors}>
+      <div className={styles.colors}>
         {product.color_options.map((color, index) => (
           <div
             key={index}
             style={{
-              background: color,
+                background: color,
             }}
             className={styles.color}
+
+            
           />
         ))}
-      </div> */}
+      </div>
 
       <strong>{product.price}</strong>
       <div>

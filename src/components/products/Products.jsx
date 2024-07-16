@@ -2,13 +2,19 @@ import { useState } from "react";
 import { useEffect } from "react";
 import styles from "./Products.module.scss";
 import Card from '../card/Card'
+import { useDispatch } from "react-redux";
+import { addProducts } from "../../store/productsSlice";
+import { useSelector } from "react-redux";
 
 
 
 
 const baseURL = import.meta.env.VITE_BASE_URL
 const Products = () => {
-    const [products , setProducts] = useState([])
+    // const [products , setProducts] = useState([])
+    const products = useSelector((store) => store.productsReducer.products);
+    const dispatch = useDispatch()
+
     const [loading , setLoading] = useState(false)
 
     const [brands , setBrands] = useState([])
@@ -60,7 +66,8 @@ const Products = () => {
          try {
              const response = await fetch(`${query}`)
              const data = await response.json()
-             setProducts(data)   
+            //  setProducts(data)  
+            dispatch(addProducts(data)) 
          } catch (error) {
              console.error('error')
              
@@ -69,7 +76,9 @@ const Products = () => {
          }
  
         }
-        fetchProducts()  
+        
+        fetchProducts() 
+
      } ,[selectedBrand , selectedColors])
  
      
