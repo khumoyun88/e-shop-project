@@ -6,7 +6,7 @@ import './App.css'
 import { BrowserRouter as Router , Routes , Route ,NavLink} from "react-router-dom"
 import Home from "./components/home/Home"
 import Products from "./components/products/Products"
-import InCart from "./components/inCart/InCart"
+
 
 
 
@@ -40,7 +40,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/products' element={<Products/>} />
-          <Route path='/products/:productId' element={<InCart/>} />
+          {/* <Route path='/products/:productId' element={<InCart/>} /> */}
 
 
 

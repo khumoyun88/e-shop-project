@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import styles from "./Products.module.scss";
+import Card from '../card/Card'
+
 
 
 
 const baseURL = import.meta.env.VITE_BASE_URL
 const Products = () => {
+    const [products , setProducts] = useState([])
+    const [loading , setLoading] = useState(false)
+
     const [brands , setBrands] = useState([])
     const [selectedBrand , setSelectedBrand] = useState([])
 
     const [colors , setColors] = useState([])
     const [selectedColors , setSelectedColors] = useState([])
+
+
 
     useEffect(()=>{
         async function fetchBrands(){
@@ -28,6 +35,29 @@ const Products = () => {
         fetchBrands()
         fetchColors()
     },[])
+
+
+    useEffect(() => {
+        async function fetchProducts(){
+         setLoading(true)
+         try {
+             const response = await fetch(`${baseURL}/products`)
+             const data = await response.json()
+             setProducts(data)   
+         } catch (error) {
+             console.error('error')
+             
+         }finally{
+             setLoading(false)
+         }
+ 
+        }
+        fetchProducts()  
+     } ,[])
+ 
+     
+
+    
 
 
     return (
@@ -72,8 +102,20 @@ const Products = () => {
 
 
             </aside>
-            <main></main>
-            
+            <main>
+        {loading ? (
+          <p>Loading...</p>
+        ) : products.length ? (
+          <div className={styles.grid}>
+            {products.map((product) => (
+              <Card key={product.id} product={product}   />
+            ))}
+          </div>
+        ) : (
+          <p>No products</p>
+        )}
+      </main>
+                       
         </div>
     )
 }
