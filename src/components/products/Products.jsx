@@ -5,12 +5,9 @@ import Card from '../card/Card'
 import { useDispatch } from "react-redux";
 import { addProducts } from "../../store/productsSlice";
 import { useSelector } from "react-redux";
-
-
-
-
 const baseURL = import.meta.env.VITE_BASE_URL
-const Products = () => {
+
+const Products = ({cart , setCart}) => {
     // const [products , setProducts] = useState([])
     const products = useSelector((store) => store.productsReducer.products);
     const dispatch = useDispatch()
@@ -18,10 +15,12 @@ const Products = () => {
     const [loading , setLoading] = useState(false)
 
     const [brands , setBrands] = useState([])
-    const [selectedBrand , setSelectedBrand] = useState([])
+    const [selectedBrand , setSelectedBrand] = useState("")
 
     const [colors , setColors] = useState([])
-    const [selectedColors , setSelectedColors] = useState([])
+    const [selectedColors , setSelectedColors] = useState("")
+
+    // const [sort , setSort] = useState()
 
 
 
@@ -81,6 +80,9 @@ const Products = () => {
 
      } ,[selectedBrand , selectedColors])
  
+
+
+
      
 
     
@@ -91,11 +93,19 @@ const Products = () => {
             <aside>
 
                 <div>
+                    {/* <h3>Price</h3>
+                    <select name="" id="">
+                      <option  selected value="">reset</option>
+                      <option value="increase">incease</option>
+                      <option value="">decrease</option>
+                    </select> */}
+
                     <h3>Brand</h3>
                     <ul  className={styles.colorsContainer}>
                         {brands.map((brand, index) => (
                         <li key={index}>
                             <input
+                            className="radio-input"
                             type='radio'
                             value={brand}
                             name='brand'
@@ -119,7 +129,7 @@ const Products = () => {
                             style={{
                                 backgroundColor:colors, 
                                 outline : selectedColors === colors ? "3px solid black" : ""}}
-                            className={styles.color} 
+                            className={styles.color}
                             onClick={() => setSelectedColors(colors)}/>     
                         </li>
                         ))}
@@ -134,13 +144,13 @@ const Products = () => {
         ) : products.length ? (
           <div className={styles.grid}>
             {products.map((product) => (
-              <Card key={product.id} product={product}   />
+              <Card key={product.id} product={product} cart={cart} setCart={setCart}  />
             ))}
           </div>
         ) : (
           <p>No products</p>
         )}
-      </main>
+            </main>
                        
         </div>
     )

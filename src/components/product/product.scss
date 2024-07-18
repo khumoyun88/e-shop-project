@@ -1,0 +1,39 @@
+.container{
+    width:90%;
+    height: 500px;
+    padding-top:20rem;
+    border-top: 2px solid gray;
+    margin: auto;
+    margin-top: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .leftSide{
+        border: 1px solid green;
+
+        img{
+
+            height: 50rem;
+        }
+
+
+    }
+
+    .rightSide{
+        border: 1px solid red;
+        max-width: 53rem;
+
+
+    }
+}
+
+hr{
+
+    margin-block: 2rem;
+    text-decoration: dashed;
+}
+
+
+
