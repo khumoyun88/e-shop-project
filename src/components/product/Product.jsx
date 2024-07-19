@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./product.scss"
+import productStyle from"./product.module.scss"
+import { FaHeart, FaHeartCircleCheck } from "react-icons/fa6";
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -20,12 +21,13 @@ const Product = () => {
   }, [productId]);
 
   return (
-    <div className="container">
-      <div className="leftSide">
-        <div>{product && <img src={product.image_url} alt={product.product_name} />}</div> 
+    <div className={productStyle.container}>
+
+      <div className={productStyle.leftSide}>
+        <div>{product && <img src={product.image_url} alt={product.product_name}   className="productStyle.img"/>}</div> 
       </div>
 
-      <div className="rightSide">
+      <div className={productStyle.rightSide}>
         <div style={{
           fontSize:"4.8rem",
           marginBlock:"1.6rem"
@@ -52,16 +54,18 @@ const Product = () => {
         <hr />
 
 
-        <h4>Coose the color</h4>
+        {/* <h4>Coose the color</h4>
         <div>{product && <p>{product.color}</p>}</div>
-        <hr />
+        <hr /> */}
 
-        <div>
-          <button>1</button>
+        <div className={productStyle.adder}>
+          <h5>+</h5>
+          <h5>1</h5>
+          <h5>-</h5>
         </div>
 
-        <button>Add to button</button>
-        <button>heart</button>
+        <button className={productStyle.add}>Add to button</button>
+        <button className={productStyle.heart}><FaHeart style={{fontSize:"2rem"}}/></button>
 
 
       

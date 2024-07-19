@@ -30,7 +30,7 @@
 
 .container {
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 230px 1fr;
   
     aside,
     main {
@@ -42,7 +42,7 @@
     }
   
     aside {
-      background-color: rgb(238, 238, 238);
+      background-color: rgb(255, 255, 255);
     }
     ul {
       margin-bottom: 4rem;
