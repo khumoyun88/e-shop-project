@@ -1,20 +1,52 @@
 .container{
     display: flex;
-    border: 1px solid red;
+    margin-top: 3rem;
 
 
     .products{
         display: flex;
         flex-direction: column;
+    
 
         .product{
             display: flex;
-            border: 1px solid rgb(47, 0, 255);
+            border: 1px solid #0ba42c7d;
+            padding: 1rem;
             align-items: top;
             margin-inline: 2rem;
-            
+            justify-content: space-between;
+
+            .image_url{
+                background-color: #d4d0d0;
+            }
+
+
         }
 
 
+    }
+
+    .total{
+        width: 40rem;
+        height: 30rem;
+        border: 1px solid #0BA42D ;
+        padding: 1rem;
+
+        h3{
+            font-size: 4rem;
+
+        }
+        h4{
+            font-size: 2rem;
+            margin-block: 2rem;
+        }
+        button{
+            width: 100%;
+            font-size: 2rem;
+            background-color:#0BA42D;
+            color: #fff;
+            font-weight: 700;
+            margin-top: 7rem;
+        }
     }
 }
