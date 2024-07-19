@@ -1,3 +1,14 @@
+.sortPrice{
+  height: 40px;
+  margin-block: 20px;
+  background-color: #D5F8CF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 20px;
+
+}
+
 .container {
     display: grid;
     grid-template-columns: 220px 1fr;

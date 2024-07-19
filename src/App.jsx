@@ -90,14 +90,14 @@ function App() {
         </header>
 
 
-        <div>
+        {/* <div>
           <h4>sort by price</h4>
           <select name="" value={sort}  onChange={(e) => setSort(e.target.value)}>
             <option  value="">reset</option>
             <option value="increase">incease</option>
             <option value="decrease">decrease</option>
           </select>
-        </div>
+        </div> */}
         <Routes>
           <Route selected path='/' element={<Home/>} />
           <Route path='/products' element={<Products cart={cart} setCart={setCart} setAdd={setAdd} />}  sort={sort}/>

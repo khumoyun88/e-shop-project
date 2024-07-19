@@ -5,7 +5,7 @@ import Card from '../card/Card';
 import { addProducts } from "../../store/productsSlice";
 const baseURL = import.meta.env.VITE_BASE_URL;
 
-const Products = ({ cart, setCart, sort , setAdd }) => {
+const Products = ({ cart, setCart, setAdd }) => {
   const products = useSelector((store) => store.productsReducer.products);
   const dispatch = useDispatch();
 
@@ -14,6 +14,7 @@ const Products = ({ cart, setCart, sort , setAdd }) => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [colors, setColors] = useState([]);
   const [selectedColors, setSelectedColors] = useState("");
+  const [sort , setSort] = useState("")
 
   useEffect(() => {
     async function fetchBrands() {
@@ -75,6 +76,16 @@ const Products = ({ cart, setCart, sort , setAdd }) => {
   });
 
   return (
+    <>
+    <div className={styles.sortPrice}>
+      <h4>Filters:</h4>
+      <select name="" value={sort}  onChange={(e) => setSort(e.target.value)}>
+        <option  value="">reset</option>
+        <option value="increase">incease</option>
+        <option value="decrease">decrease</option>
+      </select>
+    </div>
+    
     <div className={styles.container}>
       <aside>
         <div>
@@ -134,6 +145,7 @@ const Products = ({ cart, setCart, sort , setAdd }) => {
         )}
       </main>
     </div>
+    </>
   );
 }
 
