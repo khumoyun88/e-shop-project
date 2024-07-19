@@ -1,5 +1,5 @@
 // import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
+import mainLogo from '../public/GameGeek1.png'
 import shortLogo from "../public/GG.png"
 import './App.css'
 import { BrowserRouter as Router , Routes , Route ,NavLink} from "react-router-dom"
@@ -8,16 +8,21 @@ import Products from "./components/products/Products"
 import Product from "./components/product/Product"
 import { useState } from "react"
 import Cart from "./components/cart/Cart";
-
-
-
-import { FaCartShopping, FaIdBadge, FaPerson, FaPhone, FaUser } from "react-icons/fa6";
+import { FaAngleDown, FaCartShopping, FaMapLocation, FaUser } from "react-icons/fa6"
 import { FaSearch } from "react-icons/fa"
+
+
+
+
+// import { FaCartShopping, FaUser, FaSearch } from "react-icons/fa6";
 
 
 function App() {
   const [cart, setCart ] = useState([])
-  console.log(cart);
+  const [add, setAdd] = useState([]);
+
+  const [sort , setSort] = useState("")
+    // console.log(sort);
 
   return (
     <div  >
@@ -29,18 +34,21 @@ function App() {
         </div>
           
         <div>
-          <p>Get 50% Off on the Selected items </p>
+          <p style={ {borderRight:"3px solid #fff"}}>Get 50% Off on the Selected items </p>
           <p>Shop now</p>
         </div>
 
         <div>
-          <p>language</p>
-          <p>location</p>
+          <p> <FaAngleDown style={{marginRight:"1.5px"}} /> Language</p>
+          <p> <FaMapLocation style={{marginRight:"1.5px"}}/> Location</p>
         </div>
       </div>
 
-      <Router> 
-        <header>
+      <Router > 
+        <header >
+          <img style={{width:"30rem" , paddingBlock:"10px"}} src={mainLogo} alt="" />
+
+
           <nav className='navbar'>
             <ul>
               <li>
@@ -72,19 +80,32 @@ function App() {
             <FaSearch className="icon"/>
             <FaUser className="icon"/>
             <NavLink style={{position:"relative"}}  to='/cart'>
-              <FaCartShopping className="icon" />
-              <span>{cart.length}</span>
+                <FaCartShopping className="icon" />
+                <span className="cunterSapan">{cart.length}</span>
             </NavLink>
+            
           </div>
 
+
         </header>
+
+
+        <div>
+          <h4>sort by price</h4>
+          <select name="" value={sort}  onChange={(e) => setSort(e.target.value)}>
+            <option  value="">reset</option>
+            <option value="increase">incease</option>
+            <option value="decrease">decrease</option>
+          </select>
+        </div>
         <Routes>
           <Route selected path='/' element={<Home/>} />
-          <Route path='/products' element={<Products/>} cart={cart} setCart={setCart}/>
+          <Route path='/products' element={<Products cart={cart} setCart={setCart} setAdd={setAdd} />}  sort={sort}/>
           <Route path='/products/:productId' element={<Product/>} />
-          <Route path='/cart' element={<Cart/>} />
+          <Route path='/cart' element={<Cart cart={cart}/>} />
         </Routes>
       </Router>
+
     </div>
   )
 }

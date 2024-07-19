@@ -4,10 +4,19 @@ const Home = () => {
 
     return (
         
-        <div className="home" >
-            <h1>404 Error</h1>
-            <h3>by yhe time this page is unavailible</h3>
+        <div>
+            <div className="home" >
+            <h1 style={{
 
+            }}>HEADPHONES AND AUDIO FOR GAMING</h1>
+
+
+            </div>
+            <div className="errorPage">
+                <h1>Error 404</h1>
+                <h3>This page is currentle un available</h3>
+
+            </div>
         </div>
     )
 }
