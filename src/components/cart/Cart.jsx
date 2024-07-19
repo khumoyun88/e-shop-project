@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import cartStyle from "./cart.module.scss";
 const Cart = ({ cart }) => {
   const [products, setProducts] = useState([]);
+  const [total , setTotal] = useState(0)
   
   const baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -34,6 +35,15 @@ const Cart = ({ cart }) => {
     fetchProducts();
   }, [cart, baseURL]);
 
+  useEffect(() => {
+    const calculateTotal = () => {
+      const totalSum = products.reduce((acc, product) => acc + product.price, 0);
+      setTotal(totalSum);
+    };
+
+    calculateTotal();
+  }, [products]);
+
   return (
     <div>
       <h1>SHOPPING CART</h1>
@@ -48,22 +58,20 @@ const Cart = ({ cart }) => {
                 <p>{product.description}</p>
                 </div>
 
-
                 {/* <div style={{ textAlign: 'center', marginTop: '50px' }}>
                   <h1>Counter: {count}</h1>
                   <button onClick={setCount(count+1)}>Increment</button>
                   <button onClick={setCount-1} style={{ marginLeft: '10px' }}>Decrement</button>
                 </div> */}
                 
-
-                <p>{product.price}$</p>
+                <p >{product.price}$</p>
               </li>
             ))}
           </ul>
 
           <div className={cartStyle.total}>
             <h3>Cart Total</h3>
-            <h4 >Totoal: </h4>
+            <h4 >Totoal:{total}$ </h4>
             <button>buy now</button>
           </div>
         </div>
