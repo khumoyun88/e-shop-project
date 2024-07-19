@@ -94,7 +94,7 @@ const Products = ({ cart, setCart, setAdd }) => {
             {brands.map((brand, index) => (
               <li key={index}>
                 <input
-                  className="radio-input"
+                  className="styles.radio"
                   type='radio'
                   value={brand}
                   name='brand'
@@ -126,6 +126,7 @@ const Products = ({ cart, setCart, setAdd }) => {
           </ul>
         </div>
       </aside>
+      
       <main>
         {loading ? (
           <p>Loading...</p>

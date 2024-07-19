@@ -51,7 +51,7 @@ function App() {
 
           <nav className='navbar'>
             <ul>
-              <li>
+              <li >
                 <NavLink
                   className={({isActive}) => (isActive ? "activeLink" : "")}
                   to='/'
@@ -99,7 +99,7 @@ function App() {
           </select>
         </div> */}
         <Routes>
-          <Route selected path='/' element={<Home/>} />
+          <Route path='/' element={<Home/>} />
           <Route path='/products' element={<Products cart={cart} setCart={setCart} setAdd={setAdd} />}  sort={sort}/>
           <Route path='/products/:productId' element={<Product/>} />
           <Route path='/cart' element={<Cart cart={cart}/>} />

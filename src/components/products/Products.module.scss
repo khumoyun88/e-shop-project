@@ -7,6 +7,25 @@
   justify-content: space-between;
   padding-inline: 20px;
 
+  h4{
+    color: #0BA42D;
+    font-weight: 700;
+  }
+
+  select{
+    border: none;
+    background-color: inherit;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0BA42D;
+    outline: none;
+
+    option{
+      font-weight: inherit;
+      font-size: inherit;
+    }
+  }
+
 }
 
 .container {
@@ -30,9 +49,10 @@
   
       li {
         margin-bottom: 0.5em;
+        color: black;
 
         /* Hide the default radio button */
-          .radio-input {
+          input{
             appearance: none;
             position: relative;
             width: 20px;
@@ -46,7 +66,7 @@
           }
 
           /* Custom checked state */
-          .radio-input::before {
+          input::before {
             content: '';
             position: absolute;
             width: 12px;
@@ -59,7 +79,7 @@
             transition: transform 0.2s ease;
           }
 
-          .radio-input:checked::before {
+          input:checked::before {
             transform: translate(-50%, -50%) scale(1);
           }
 
@@ -92,7 +112,7 @@
           position: relative;
           width: 20px;
           height: 20px;
-          border: 2px solid green;
+          // border: 2px solid green;
           border-radius: 35%;
           cursor: pointer;
           outline: none;
